@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Snackboard</title>
+    <!--jquery + ui-->
+    <script src="lib/jqueryui/jquery-1.8.3.js">  </script>
+    <script src="lib/jqueryui/jquery-ui-1.9.2.custom.js">   </script>
+    <link rel="stylesheet" href="lib/jqueryui/jquery-ui-1.9.2.custom.css">
+    <!--bootstrap    -->
+    <script src="lib/bootstrap/js/bootstrap.js"> </script>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <!--leaflet-->
+    <script src="lib/leaflet/leaflet-src.js"></script>
+    <link rel="stylesheet" href="lib/leaflet/leaflet.css"><!--[if lt IE 8]>
+    <link rel="stylesheet" href="lib/leaflet/leaflet.ie.css"><![endif]-->
+    <!--leaflet markercluster -->
+    <script src="lib/leaflet-markercluster/leaflet.markercluster-src.js">  </script>
+    <link rel="stylesheet" href="lib/leaflet-markercluster/MarkerCluster.css">
+    <link rel="stylesheet" href="lib/leaflet-markercluster/MarkerCluster.Default.css"><!--[if lt IE 8]>
+    <link rel="stylesheet" href="lib/leaflet-markercluster/MarkerCluster.Default.ie.css"><![endif]-->
+    <!--d3, crossfiler, dc    -->
+    <script src="lib/dc/d3.v2.js"></script>
+    <script src="lib/dc/crossfilter.js"></script>
+    <script src="lib/dc/dc.js"> </script>
+    <link rel="stylesheet" href="lib/dc/dc.css">
+    <!--wordcloud library-->
+    <script src="lib/d3-cloud/d3.layout.cloud.js"></script>
+    <!--hashing-->
+    <script src="lib/hashing/murmurhash3_gc.js"></script>
+    <!--data-->
+    <!--script(src="data/geojson/la_county.json") -->
+    <script src="data/geojson/la_county_simplified.json"> </script>
+    <!--application   -->
+    <script src="js/snackboard.js"></script>
+    <script src="js/debug.js"></script>
+    <script src="js/loaddata.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/ohmage.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/photopanel.js"></script>
+    <script src="js/wordcloud.js"></script>
+    <script src="js/responsemodal.js"></script>
+    <link rel="stylesheet" href="css/snack.css">
+  </head>
+  <body>
+    <div id="buttonpanel">
+      <button id="timeseriesbutton" data-toggle="button" data-panel="bottompanel" class="btn widgetbutton"> <img src="images/bars.png"></button>
+      <button id="piechartbutton" data-toggle="button" data-panel="piepanel" class="btn widgetbutton"> <img src="images/piechart.png"></button>
+      <button id="histbutton" data-toggle="button" data-panel="histpanel" class="btn widgetbutton"> <img src="images/bars2.png"></button>
+      <button id="wcbutton" data-toggle="button" data-panel="wcpanel" class="btn widgetbutton"> <img src="images/wc.png"></button>
+      <button id="photobutton" data-toggle="button" data-panel="photopanel" class="btn widgetbutton"> <img src="images/camera.png"></button>
+    </div>
+    <div id="data-count" class="hide">(<span class="filter-count"></span>/<span class="total-count"></span>)</div>
+    <div id="widgets"></div>
+    <div id="loadinganimation"><img src="images/loading1.gif" alt="loading"></div>
+    <div id="map"></div>
+    <div id="photopanel" class="well chartpanel">
+      <div id="imagelist"></div><a id="prevthumbs" href="#" class="hide left carousel-control">‹</a><a id="nextthumbs" href="#" class="hide right carousel-control">›    </a>
+    </div>
+    <div id="responsemodal" class="modal hide fade">
+      <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+        <h3>Snacking Entry</h3>
+      </div>
+      <div class="modal-body">
+        <div id="modalphoto"><img id="resphoto" images/nophoto.jpg class="img-rounded"><a id="nextitem" href="#" class="left carousel-control">‹</a><a id="previtem" href="#" class="right carousel-control">›</a></div>
+      </div>
+      <div class="modal-footer">
+        <table id="responsetable" class="table table-condensed">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What?</td>
+              <td id="tablewhat">-</td>
+            </tr>
+            <tr>
+              <td>Why?</td>
+              <td id="tablewhy">-</td>
+            </tr>
+            <tr>
+              <td>Where?</td>
+              <td id="tablewhere">-</td>
+            </tr>
+            <tr>
+              <td>When?</td>
+              <td id="tablewhen">-</td>
+            </tr>
+            <tr>
+              <td>With Who?</td>
+              <td id="tablewho">-                    </td>
+            </tr>
+            <tr>
+              <td>Cost?</td>
+              <td id="tablecost">- </td>
+            </tr>
+            <tr>
+              <td>How Healthy? (1-5)</td>
+              <td id="tablehealthy">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="wcpanel" class="chartpanel">
+      <div class="wccontainer well">
+        <div class="title"><span>What</span></div>
+        <div id="what-chart" class="chart"></div>
+      </div>
+      <div class="wccontainer well">
+        <div class="title"><span>Why   </span></div>
+        <div id="why-chart" class="chart"></div>
+      </div>
+    </div>
+    <div id="bottompanel" class="well chartpanel"> 
+      <div id="date-chart" class="chart">
+        <div class="title"><span>Response Date </span><a data-chart="datechart" href="#" style="display: none;" class="reset">(reset)</a></div>
+      </div>
+      <div id="hour-chart" class="chart">
+        <div class="title"><span>Time of day </span><a data-chart="hourchart" href="#" style="display: none;" class="reset">(reset)</a></div>
+      </div>
+    </div>
+    <div id="piepanel" class="well chartpanel">
+      <div id="cost-chart" class="chart">
+        <div class="title"><span>Cost </span><a data-chart="costchart" href="#" style="display: none;" class="reset">(reset)</a></div>
+      </div>
+      <div id="who-chart" class="chart">
+        <div class="title"><span>With Who </span><a data-chart="whochart" href="#" style="display: none;" class="reset">(reset)        </a></div>
+      </div>
+      <div id="location-chart" class="chart">
+        <div class="title"><span>Where </span><a data-chart="locationchart" href="#" style="display: none;" class="reset">(reset) </a></div>
+      </div>
+      <div id="period-chart" class="chart">
+        <div class="title"><span>When </span><a data-chart="periodchart" href="#" style="display: none;" class="reset">(reset)            </a></div>
+      </div>
+    </div>
+    <div id="histpanel" class="well chartpanel">
+      <div id="healthy-chart" class="chart">
+        <div class="title"><span>How Healthy</span><a data-chart="healthychart" href="#" style="display: none;" class="reset">(reset)   </a></div>
+      </div>
+    </div>
+    <aside id="totals" class="hide"><span id="active">-</span> of <span id="total">-</span> responses selected.</aside>
+  </body>
+</html>

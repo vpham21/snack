@@ -1,0 +1,250 @@
+#responsemodal {
+  top: 30px;
+  padding-bottom: 0;
+}
+
+#loadinganimation {
+  width: 100%;
+  margin-top: 200px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+#data-count {
+  position: fixed;
+  top: 65px;
+  left: 20px;
+  z-index: 9;
+  color: navy;
+}
+
+#photopanel {
+  position: fixed;
+  bottom: 140px;
+  left: 410px;
+  z-index: 10;
+  width: 526px;
+  height: 400px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+#photopanel img {
+  width: 80px;
+  height: 80px;
+}
+
+#imagelist li {
+  width: 86px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.thumbcontainer {
+  padding: 5px;
+  text-align: justify;
+}
+
+.table {
+  padding-bottom: 0xp;
+  margin-bottom: 0;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.overlaypanel {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 99;
+  overflow: hidden;
+}
+
+#map {
+  height: 100%;
+}
+
+.widgetbutton {
+  width: 60px;
+  height: 43px;
+  margin-right: 2px;
+}
+
+.widgetbutton img {
+  width: 34px;
+  height: 34px;
+}
+
+#buttonpanel {
+  display: none;
+  width: 330px;
+  height: 43px;
+  margin-top: -43px;
+  margin-left: 35px;
+}
+
+.wccontainer {
+  width: 350px;
+  height: 240px;
+  padding: 5px 0 0px 0px;
+  margin: 5px 0 0px 0px;
+  background-color: #fff;
+  background-image: url(../images/grid-18px-masked.png);
+  background-repeat: repeat-x;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#modalphoto {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+#modalphoto img {
+  height: 300px;
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.title a {
+  color: red;
+}
+
+#prevthumbs {
+  margin-top: 18px;
+  margin-left: -15px;
+}
+
+#nextthumbs {
+  margin-top: 18px;
+  margin-right: -15px;
+}
+
+#bottompanel {
+  position: fixed;
+  bottom: 3px;
+  left: 3px;
+  width: 1050px;
+  height: 130px;
+}
+
+#histpanel {
+  position: fixed;
+  bottom: 3px;
+  left: 1060px;
+  width: 250px;
+  height: 130px;
+}
+
+.chartpanel {
+  z-index: 9;
+  display: none;
+  padding: 0;
+  margin: 0;
+}
+
+#wcpanel {
+  position: fixed;
+  right: 3px;
+  bottom: 140px;
+  width: 350px;
+  height: 500px;
+}
+
+#healthy-chart rect.deselected {
+  stroke: none;
+  fill: #ccc;
+}
+
+#healthy-chart rect.bar {
+  stroke: none;
+  fill: #BEBADA;
+}
+
+#hour-chart .title {
+  position: absolute;
+  top: 10px;
+  left: 905px;
+  text-decoration: underline;
+}
+
+#healthy-chart .title {
+  position: absolute;
+  top: 5px;
+  left: 120px;
+}
+
+#date-chart .title {
+  position: absolute;
+  top: 10px;
+  left: 600px;
+}
+
+.wccontainer .title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#piepanel {
+  position: fixed;
+  bottom: 140px;
+  left: 3px;
+  width: 400px;
+  height: 410px;
+  background-color: #fff;
+  background-image: url(../images/grid-18px-masked.png);
+  background-repeat: repeat-x;
+}
+
+#piepanel .chart,
+#histpanel .chart {
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+#piepanel .title,
+#histpanel .title {
+  z-index: 9;
+  margin-bottom: -5px;
+}
+
+.hoverinfo {
+  position: fixed;
+  left: 400px;
+  width: 150px;
+  padding: 6px 8px;
+  font: 14px/16px Arial, Helvetica, sans-serif;
+  text-align: center;
+  background: white;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.hoverinfo h4 {
+  margin: 0 0 5px;
+  color: #777;
+}
+
+.leaflet-top.leaflet-right .leaflet-control-layers a {
+  width: 64px;
+  height: 64px;
+  background-image: url('../images/icon_map.png');
+  border-radius: 8px;
+  box-shadow: 3px 3px 3px #888888;
+}
