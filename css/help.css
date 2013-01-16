@@ -1,0 +1,135 @@
+#footer {
+  background-color: #f5f5f5;
+}
+
+#wrap {
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto -60px;
+}
+
+#push,
+#footer {
+  height: 60px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#myCarousel {
+  width: 300px;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#datatext p {
+  text-align: justify;
+}
+
+.item img {
+  width: 279;
+  padding: auto;
+  margin: auto;
+  border: solid gray 1px;
+}
+
+.container {
+  width: 880px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.container .credit {
+  margin: 20px 0;
+}
+
+#contentdiv {
+  margin-top: 50px;
+}
+
+#snackvideo {
+  width: 854px;
+  height: 480px;
+  border: solid gray 1px;
+}
+
+#snackvideo {
+  margin: 0 0px 0px 0px;
+}
+
+@media (max-width: 920px) {
+  .container {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  #snackvideo {
+    width: 640px;
+    height: 360px;
+  }
+}
+
+@media (min-width: 921px) and (max-width: 1340px) {
+  .container {
+    width: 880px;
+  }
+  #snackvideo {
+    width: 854px;
+    height: 480px;
+  }
+}
+
+@media (min-width: 1341px) {
+  .container {
+    width: 1300px;
+  }
+  #snackvideo {
+    width: 1280px;
+    height: 720px;
+  }
+}
+
+.marketing {
+  color: #5a5a5a;
+  text-align: center;
+}
+
+.marketing .marketing-byline {
+  margin-bottom: 40px;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.25;
+  color: #999;
+}
+
+.marketing p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.marketing h1 {
+  margin: 60px 0 10px;
+  font-size: 60px;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.marketing h2 {
+  margin-bottom: 15px;
+  font-weight: 200;
+}
+
+.marketing-img {
+  display: block;
+  max-height: 65px;
+  margin: 0 auto 30px;
+}

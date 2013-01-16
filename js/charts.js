@@ -161,7 +161,9 @@ function initcharts(){
 
 	//init wordclouds
 	dashboard.charts.whychart = $("#why-chart").wordcloud({variable : "prompt_id_WhySnack"})
-	dashboard.charts.whatchart = $("#what-chart").wordcloud({variable : "prompt_id_WhatSnack"})    	
+	dashboard.charts.whatchart = $("#what-chart").wordcloud({variable : "prompt_id_WhatSnack"})  
+	
+	$("#histpanel").draggable({containment: "body", snap: "body", snapMode: "inner" })
 		
 	//add reset handler
 	$(".title a.reset").on("click", function(e){
@@ -213,4 +215,6 @@ function initcharts(){
 			$("#" + panel).hide();
 		}
 	});	
+	
+	inithelp();
 }
